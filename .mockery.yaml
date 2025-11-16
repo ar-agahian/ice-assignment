@@ -1,0 +1,14 @@
+dir: "mocks"
+outpkg: "mocks"
+packages:
+  github.com/ar-agahian/ice-assignment/internal/interfaces/repository:
+    interfaces:
+      ITodoRepository:
+        mockName: MockITodoRepository
+  github.com/ar-agahian/ice-assignment/internal/interfaces/client:
+    interfaces:
+      IFileStorage:
+        mockName: MockIFileStorage
+      IStreamPublisher:
+        mockName: MockIStreamPublisher
+

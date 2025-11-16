@@ -1,0 +1,38 @@
+services:
+  mysql:
+    image: mysql:9.5.0
+    container_name: todo-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todo_db
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:8.2.3
+    container_name: todo-redis
+    ports:
+      - "6379:6379"
+
+  localstack:
+    image: localstack/localstack:4.10.0
+    container_name: todo-localstack
+    environment:
+      SERVICES: s3
+      PERSISTENCE: 1
+      REGION: us-east-1
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+    ports:
+      - "4566:4566"
+      - "4510-4559:4510-4559"
+    volumes:
+      - localstack_data:/var/lib/localstack
+
+volumes:
+  mysql_data:
+  localstack_data:
+
